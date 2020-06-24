@@ -37,8 +37,18 @@ function code (params) {
   fd.append('type', params.type)
   return Axios.post('/api/api/user/user/code', fd)
 }
+function authCode (uuid) {
+  // var num = Math.ceil(Math.random() * 10)
+  return Axios.get('/api/api/user/hf-auth/code?uuid=' + uuid)
+}
+function codeGit (uuid) {
+  // var num = Math.ceil(Math.random() * 10)
+  return Axios.get('/api/api/user/hf-auth/codeGit?uuid=' + uuid)
+}
 export default {
   login: login,
   token: token,
-  code: code
+  code: code,
+  authCode: authCode,
+  codeGit: codeGit
 }

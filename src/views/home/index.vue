@@ -18,6 +18,7 @@
           <el-menu-item index="/store">小程序商城</el-menu-item>
           <el-menu-item index="/web">网站(web/h5)</el-menu-item>
           <el-menu-item index="/uni-app">uni-app商城</el-menu-item>
+          <el-menu-item index="/news">消息管理</el-menu-item>
           <el-menu-item index="/set">设置</el-menu-item>
         </el-menu>
       </div>

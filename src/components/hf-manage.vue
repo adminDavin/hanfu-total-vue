@@ -8,7 +8,7 @@
 
       <el-col :span="3">
         <el-button size="small" @click="addApplet" type="primary">新建{{labelName}}</el-button>
-        <el-button size="mini" type="primary" @click="uploadOpen">上传测试文件</el-button>
+        <!-- <el-button size="mini" type="primary" @click="uploadOpen">上传测试文件</el-button> -->
       </el-col>
 
       <el-col :span="4">
