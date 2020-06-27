@@ -9,6 +9,7 @@ function resolve (dir) {
 
 module.exports = {
   // 开发服务配置
+  publicPath: process.env.NODE_ENV === 'production' ? '/hanfu-total' : '/',
   devServer: {
     port: 8888, // 端口号
     host: 'localhost', // 主机
@@ -30,7 +31,7 @@ module.exports = {
   configureWebpack: {
     // 路径配置
     resolve: {
-      extensions: ['.js', '.vue', '.json'],
+      extensions: ['.js', '.vue', '.json', '.css'],
       // 别名配置
       alias: {
         // @ is an alias to /src
