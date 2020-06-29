@@ -7,6 +7,17 @@
       </div>
       <div class="center box">
         <h1>管理中心</h1>
+        <el-dropdown>
+          <span class="el-dropdown-link">
+            用名称
+            <i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item ><div @click="amend">修改密码</div></el-dropdown-item>
+            <el-dropdown-item>退出</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+
         <el-menu
           :default-active="$route.path"
           class="el-menu-demo"
@@ -24,20 +35,22 @@
       </div>
     </div>
     <!-- 内容部分 -->
-      <router-view></router-view>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
   data () {
-    return {
-
-    }
+    return {}
   },
   methods: {
     handleSelect (key, keyPath) {
       console.log(key, keyPath)
+    },
+    amend () {
+      console.log(1)
+      this.$router.push({ path: '/passwd' })
     }
   }
 }

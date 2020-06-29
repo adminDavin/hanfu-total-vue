@@ -236,6 +236,7 @@ export default {
       // log.authCode(this.uuid, res => {
       // console.log('验证码图', res)
       this.authCodeurl = '/api' + '/api/user/hf-auth/code?uuid=' + this.uuid
+      setTimeout(() => { this.codeGit() }, 10)
       // })
     },
     codeGit () {
@@ -248,30 +249,37 @@ export default {
     getcode () {
       console.log(this.ruleForm.authKey === /^1[3-9]\d{9}$/)
       const patrn = /^1[3-9]\d{9}$/
-      this.codeGit()
-      if (this.captcha !== this.ruleForm.captcha) {
-        this.$message.error('请输入验证码')
-        return
-      }
-      if (patrn.exec(this.ruleForm.authKey)) {
-        const params = {
-          phone: this.ruleForm.authKey,
-          type: 'login'
+      log.codeGit(this.uuid, res => {
+        console.log('验证码', res)
+        this.captcha = res.data
+        if (this.captcha !== this.ruleForm.captcha) {
+          this.$message.error('请输入验证码')
+          return
         }
-        log.code(params, res => {
-          console.log(res)
-          this.ruleForm.passwd = res.data.data
-        })
+        if (patrn.exec(this.ruleForm.authKey)) {
+          const params = {
+            phone: this.ruleForm.authKey,
+            type: 'login'
+          }
+          log.code(params, res => {
+            console.log(res)
+            this.ruleForm.passwd = res.data.data
+          })
         // this.$router.push('/');
-      } else {
-        return false
-      }
+        } else {
+          return false
+        }
+      })
     },
     // 登录
     submitForm (formName) {
       this.codeGit()
+      if (this.ruleForm.captcha === '1') {
+        this.$message.error('验证码不能为空')
+        return
+      }
       if (this.captcha !== this.ruleForm.captcha) {
-        this.$message.error('请输入验证码')
+        this.$message.error('验证码不正确')
         return
       }
       this.$refs[formName].validate(valid => {

@@ -48,6 +48,11 @@ const router = new VueRouter({
           path: '/news',
           name: 'news',
           component: (resolve) => require(['@/views/news/index.vue'], resolve)
+        },
+        {
+          path: '/passwd',
+          name: 'passwd',
+          component: (resolve) => require(['@/views/home/passwd.vue'], resolve)
         }
       ]
     }

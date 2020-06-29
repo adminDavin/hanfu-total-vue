@@ -23,7 +23,7 @@
         </el-table-column>
       </el-table>
 
-      <el-pagination
+      <!-- <el-pagination
         background
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
@@ -31,7 +31,7 @@
         :page-size="100"
         layout="prev, pager, next, jumper"
         :total="1000"
-      ></el-pagination>
+      ></el-pagination> -->
 
    <el-dialog
 

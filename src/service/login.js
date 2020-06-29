@@ -17,10 +17,14 @@ async function authCode (uuid, handleResult) {
 async function codeGit (uuid, handleResult) {
   log.codeGit(uuid).then((res) => handleResult(res))
 }
+async function updatePasswd (uuid, handleResult) {
+  log.updatePasswd(uuid).then((res) => handleResult(res))
+}
 export default {
   login: login,
   token: token,
   code: code,
   authCode: authCode,
-  codeGit: codeGit
+  codeGit: codeGit,
+  updatePasswd: updatePasswd
 }

@@ -45,10 +45,19 @@ function codeGit (uuid) {
   // var num = Math.ceil(Math.random() * 10)
   return Axios.get('/api/api/user/hf-auth/codeGit?uuid=' + uuid)
 }
+function updatePasswd (params) {
+  console.log(params)
+  const fd = new FormData()
+  fd.append('AccountId', params.AccountId)
+  fd.append('newPassWord', params.newPassWord)
+  fd.append('oldPaddWord', params.oldPaddWord)
+  return Axios.post('/api/api/user/hf-auth/updatePasswd', fd)
+}
 export default {
   login: login,
   token: token,
   code: code,
   authCode: authCode,
-  codeGit: codeGit
+  codeGit: codeGit,
+  updatePasswd: updatePasswd
 }

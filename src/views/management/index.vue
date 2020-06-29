@@ -350,8 +350,7 @@ export default {
         AccountId: row.id
       }
       api.deletedSass(params, (res) => {
-        console.log('查询', res.data.data)
-        this.tableData = res.data.data.list
+        this.SassList()
       })
     },
     submit () {
@@ -423,6 +422,11 @@ export default {
           this.ruleForm.lastModifier = store.getUser().account
           api.AddSass(this.ruleForm, (res) => {
             console.log(res)
+            this.$message({
+              message: '添加成功',
+              type: 'success'
+            })
+            this.$refs.ruleForm.resetFields()
           })
         } else {
           console.log('error submit!!')
@@ -431,7 +435,11 @@ export default {
       })
     },
     Tabs (e) {
+      console.log(e)
       this.criteria = e
+      if (e === '2') {
+        this.SassList()
+      }
     },
     // --------------基础权限全选的事件------------------
     handleCheckAllChange (val) {
