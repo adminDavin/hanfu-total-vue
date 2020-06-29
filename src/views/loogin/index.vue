@@ -252,8 +252,12 @@ export default {
       log.codeGit(this.uuid, res => {
         console.log('验证码', res)
         this.captcha = res.data
+        if (this.ruleForm.captcha === '') {
+          this.$message.error('验证码不能为空')
+          return
+        }
         if (this.captcha !== this.ruleForm.captcha) {
-          this.$message.error('请输入验证码')
+          this.$message.error('验证码不正确')
           return
         }
         if (patrn.exec(this.ruleForm.authKey)) {
@@ -274,7 +278,7 @@ export default {
     // 登录
     submitForm (formName) {
       this.codeGit()
-      if (this.ruleForm.captcha === '1') {
+      if (this.ruleForm.captcha === '') {
         this.$message.error('验证码不能为空')
         return
       }
