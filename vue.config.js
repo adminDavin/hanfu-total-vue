@@ -29,6 +29,7 @@ module.exports = {
   // 如果你不需要生产环境的 source map，可以将其设置为 false 以加速生产环境构建。
   productionSourceMap: false,
   // 开发服务配置
+  publicPath: process.env.NODE_ENV === 'production' ? '/hanfu-total' : '/',
   devServer: {
     port: 8888, // 端口号
     host: 'localhost', // 主机
@@ -50,7 +51,7 @@ module.exports = {
   configureWebpack: {
     // 路径配置
     resolve: {
-      extensions: ['.js', '.vue', '.json'],
+      extensions: ['.js', '.vue', '.json', '.css'],
       // 别名配置
       alias: {
         // @ is an alias to /src
